@@ -1,0 +1,6 @@
+emp<-list("Ram","sham","swati", "pooja","Arun"),
+print(emp)
+emp<-append(emp,”Rohan”)
+print(emp)
+newlist<-emp[-3]
+print(newlist

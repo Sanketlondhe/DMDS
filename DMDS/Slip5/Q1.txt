@@ -1,0 +1,7 @@
+f1 <- factor(sample(LETTERS, size=6, replace=TRUE))
+f2 <- factor(sample(LETTERS, size=6, replace=TRUE))
+print(f1)
+print(f2)
+f <- factor(c(levels(f1)[f1], levels(f2)[f2]))
+print("after concanite factors :")
+print( f )

@@ -1,0 +1,6 @@
+Students = data.frame(Rollno = c(11,13,14,15,16),
+ Studname=c("Ram","sham","swati", "pooja","Arun"),
+ Address=c("pune","Mumbai","delhi","jaipur","Bhopal"),
+ Marks=c(23,22,25,26,32))
+print("Details of the Students :") 
+print(Students)

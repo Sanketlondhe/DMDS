@@ -1,0 +1,23 @@
+#importing libraries
+import numpy as np
+import pandas as pd
+from sklearn.linear_model import LinearRegression
+
+x=np.array([0,1,2,3,4,5,6,7,8,9,11,13]).reshape((-1,1))
+y=np.array([1,3,2,5,7,8,8,9,10,12,16,18])
+
+
+print(x)
+
+print(y)
+
+model = LinearRegression() 
+model.fit(x,y)
+
+model = LinearRegression().fit(x,y)
+
+r_sq= model.score(x,y)
+print("Coefficient of determination:",r_sq)
+
+
+print("slope(value of b1):",model.coef_)

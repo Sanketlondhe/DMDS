@@ -1,0 +1,11 @@
+import numpy as nm 
+import matplotlib.pyplot as mtp 
+import pandas as pd 
+from apyori import apriori
+
+dataset = pd.read_csv('stores.csv') 
+dataset
+
+records = []
+for i in range(0,300):
+    records.append([str(dataset.values[i,j]) for j in range(0,20)])

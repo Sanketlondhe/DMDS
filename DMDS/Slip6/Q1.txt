@@ -1,0 +1,7 @@
+a = c(12,3,4,5,6,7)
+b = c(1,2,4,7,8,9,4)
+ab=data.frame(a,b)
+print(ab)
+print("duplicate elements")
+print(duplicated(ab))
+print(unique(ab))

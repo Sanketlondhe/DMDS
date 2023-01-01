@@ -1,0 +1,11 @@
+import numpy as np
+import matplotlib.pyplot as plt
+import pandas as pd
+
+store_data=pd.read_csv('StudentsPerformance.csv',header=None)
+store_data
+
+1---store_data.shape //shape method
+
+
+2---store_data.head()

@@ -1,0 +1,41 @@
+#importing libraries
+import numpy as np
+import matplotlib.pyplot as matp
+import pandas as pd
+
+dataset=pd.read_csv("CC GENERAL.csv")
+dataset.head()
+
+x=dataset.iloc[:,[1,3]].values
+print(x)
+
+from sklearn.cluster import KMeans
+wcss_list= []
+
+for i in range(1,11):
+    kmeans = KMeans(n_clusters=i,init='k-means++',random_state=42)
+    kmeans.fit(x)
+    wcss_list.append(kmeans.inertia_)
+    
+matp.plot(range(1,11),wcss_list)
+matp.title('The Elbow Method Graph')
+matp.xlabel('Number of clusters')
+matp.ylabel('wcss_list')
+matp.show()
+
+kmeans = KMeans(n_clusters=5,init='k-means++',random_state= 42)
+y_pred= kmeans.fit_predict(x)
+
+print(y_pred)
+
+matp.scatter(x[y_pred==0,0],x[y_pred==0,1],s=100,c='blue',label='Cluster 1')
+matp.scatter(x[y_pred==1,0],x[y_pred==1,1],s=100,c='green',label='Cluster 2')
+matp.scatter(x[y_pred==2,0],x[y_pred==2,1],s=100,c='red',label='Cluster 3')
+matp.scatter(x[y_pred==3,0],x[y_pred==3,1],s=100,c='yellow',label='Cluster 4')
+matp.scatter(x[y_pred==4,0],x[y_pred==4,1],s=100,c='brown',label='Cluster 5')
+matp.scatter(kmeans.cluster_centers_[:,0],kmeans.cluster_centers_[:,1],s=300,c='yellow',label='centroid')
+matp.title('Clusters of customer')
+matp.xlabel('BALANCE')
+matp.ylabel('PURCHASES')
+matp.legend()
+matp.show()

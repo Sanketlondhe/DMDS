@@ -1,0 +1,41 @@
+import pandas as pd
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.model_selection import train_test_split
+from sklearn import metrics
+
+dataset= pd.read_csv("diabetes.csv")
+dataset.head()
+
+feature_cols = ['Pregnancies','Insulin','BMI','Age','Glucose','BloodPressure','DiabetesPedigreeFunction']
+x = dataset[feature_cols]
+y = dataset.Outcome      
+
+
+print(x)
+
+print(y)
+
+x_train, x_test, y_train, y_test = train_test_split(x,y, test_size=0.3, random_state=1)
+
+classifier = DecisionTreeClassifier() #create decision tree classifier object
+classifier = classifier.fit(x_train,y_train) #train decision tree classifier
+y_pred = classifier.predict(x_test) #predicting the test dataset
+
+print("Accuracy:", metrics.accuracy_score(y_test,y_pred))
+
+from sklearn.metrics import confusion_matrix
+cm= confusion_matrix(y_test,y_pred)
+
+print(cm)
+
+from sklearn.tree import export_graphviz
+from six import StringIO 
+from IPython.display import Image  
+import pydotplus
+dot_data = StringIO()
+export_graphviz(classifier, out_file=dot_data,  
+                filled=True, rounded=True,
+                special_characters=True,feature_names = feature_cols,class_names=['0','1'])
+graph = pydotplus.graph_from_dot_data(dot_data.getvalue())  
+graph.write_png('diabetes.png')
+Image(graph.create_png())

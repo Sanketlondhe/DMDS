@@ -1,0 +1,6 @@
+year=c(2001,2002,2003);
+export=c(26,32,35);
+import=c(35,40,50);
+par(mfrow=c(1,2));
+barplot(export,legend.text=year,col=rainbow(3),main="Export");
+barplot(import,legend.text=year,col=rainbow(3),main="Import");
